@@ -16,16 +16,16 @@ def retweet(tag):
 	data_user_id = div[0]['data-screen-name']
 	referer = 'https://twitter.com/'+data_user_id
 	headers['Referer'] = referer;
-	print headers;
+	#print headers;
 	authenticity_token = input[0]['value']
-	print authenticity_token
+	#print authenticity_token
 	params = {}
 	params['authenticity_token'] = authenticity_token
 	tweets = soup.findAll('li',{'data-item-type':'tweet'})
 	for tweet in tweets:
 		params['id'] = tweet['data-item-id']
 		retweet_url = 'https://twitter.com/i/tweet/retweet'
-		print params
+		#print params
 		r_retweet = requests.post(retweet_url,data=params,verify=False,cookies=login_cookies,proxies=proxies,headers=headers)
 
 
